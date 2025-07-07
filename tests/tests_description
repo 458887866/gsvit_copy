@@ -1,0 +1,109 @@
+
+___________________________________________________________________________
+test01: basic operation
+
+Cubic volume with no boundary conditions (i.e. not precise reflecting BC),
+and centered point source. Outputs different cross-section planes to Gwyddion file
+and to a text file (from single point).
+Calculation is performed on CPU and material (which is none) is checked
+to use faster variant of Yee algorithm.
+
+What can be tested:
+- basic performance of the software (first test to see whether it works after installation)
+- performance of Yee algorithm with none material properties (compare with MATMODE_CHECK=0 calling
+full algorithm, resulting in different speed and memory allocation.)
+- GPU performance (compare with GPU=1)
+- GPU performance with none/full material properties (combine GPU and MATMODE)
+- scaling of basic calculation speed and memory requirements (varying POOL size)
+- point source properties (varying the file "xsource.txt").
+
+Compare out.gwy with test01_out.gwy or point_log with test01_point_log to check 
+proper performance. 
+
+___________________________________________________________________________
+
+test02: total/scattered field source
+
+Cubic volume with Liao absorbing boundary condition and Total/scattered field plane wave
+source. Outputs cross-sections to a Gwyddion file and point values in three different
+locations in scattered field region to text files. A perfect electric conductor (PEC)
+sphere is located in the center.
+
+What can be tested:
+- performance of boundary conditions
+- use of TSF source (try different angles for incident wave)
+- PEC material conditions
+- try using real metal instead of PEC
+
+Compare out.gwy with test02_out.gwy or tpntx with test02_pointx_log (and similarily
+for tpnty and tpntz) to check proper performance. Results should be directly comparable
+with test03 (SF source).
+
+
+____________________________________________________________________________
+
+
+test03: scattered field source
+
+Cubic volume with Liao absorbing boundary condition and Scattered field plane wave
+source. Outputs cross-sections to a Gwyddion file and point values in three different
+locations in scattered field region to text files. A perfect electric conductor (PEC)
+sphere is located in the center.
+
+What can be tested:
+- performance of boundary conditions
+- use of SF source (try different angles for incident wave)
+- PEC material conditions
+
+Compare out.gwy with test03_out.gwy or tpntx with test03_pointx_log (and similarily
+for tpnty and tpntz) to check proper performance. Results should be directly comparable
+with test02 (TSF source).
+
+___________________________________________________________________________
+
+test04: near-to far field transformation
+
+Cubic volume with Liao absorbing boundary condition and a point source. 
+Near-to-far field transformation (NFFF) is applied to calculate values of electric field 
+in single point in a computation space, being directly comparable with direct
+computation.
+
+What can be tested:
+- NFFF operation, try different NFFF integration boundary sizes and shapes
+
+Compare out.gwy with test04_out.gwy, xpnt with test01_point_log to check
+proper performance.
+
+___________________________________________________________________________
+
+test05: convolutional perfectly matched layer
+
+Cubic volume with Convolutional Perfectly Matched Layer boundary condition and a point source. 
+
+What can be tested:
+- compare performance of different CPML settings
+- compare performance of Liao boundary condition (modify paramtere BOUNDARY_ALL to liao)
+- try to add material to the computational volume, including boundaries, as
+MEDIUM_VECTOR
+halfspace.txt
+
+Compare out.gwy with test05_out.gwy and xpnt with test05_point_log to check
+proper performance.
+
+___________________________________________________________________________
+
+test06: periodic boundary conditions
+
+Cubic volume with Liao boundary condition, a point source and medium periodic boundary
+condition creating a periodic cube within the computational volume. 
+
+What can be tested:
+- medium periodic boundary conditions
+
+Compare out.gwy with test06_out.gwy and xpnt with test06_point_log to check
+proper performance.
+
+
+
+
+

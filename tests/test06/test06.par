@@ -1,0 +1,50 @@
+POOL
+200 200 200 1e-6 1e-6 1e-6
+
+COMP
+401
+
+VERBOSE
+3
+
+MATMODE_CHECK
+0
+
+OUT_IMAGE
+Ex 50 100 -1 -1  ey_xplane logscale
+
+OUT_IMAGE
+Ex 50 -1 100 -1  ey_yplane logscale
+
+OUT_IMAGE
+Ex 50 -1 -1 100  ey_zplane logscale
+
+
+SOURCE_POINT
+100 100 100 0 xpulse.txt
+
+MBOUNDARY_X0
+periodic 15
+
+MBOUNDARY_Y0
+periodic 15
+
+MBOUNDARY_Z0
+periodic 15
+
+MBOUNDARY_XN
+periodic 195
+
+MBOUNDARY_YN
+periodic 195
+
+MBOUNDARY_ZN
+periodic 195
+
+OUT_POINT
+Ex 1 100 150 100 px
+
+BOUNDARY_ALL
+liao
+
+

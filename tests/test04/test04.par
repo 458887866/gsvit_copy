@@ -1,0 +1,32 @@
+POOL
+200 200 200 1e-6 1e-6 1e-6
+
+COMP
+600
+
+VERBOSE
+3
+
+OUT_IMAGE
+Ex 100  100 -1 -1 ex logscale
+
+OUT_IMAGE
+Ex 100  -1 100 -1 ey logscale
+
+OUT_IMAGE
+Ex 100  -1 -1 100 ez logscale
+
+BOUNDARY_ALL
+liao
+
+SOURCE_POINT
+103 90 100 0 xpulse.txt
+
+NFFF
+80 60 80 130 120 120 1 10000000
+
+NFFF_RAMAHI_POINT
+90 130 50 farpoint
+
+OUT_POINT
+All 1 90 130 50 nearpoint

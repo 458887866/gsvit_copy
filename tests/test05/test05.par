@@ -1,0 +1,33 @@
+POOL
+200 200 200 1e-6 1e-6 1e-6
+
+COMP
+601
+
+VERBOSE
+3
+
+MATMODE_CHECK
+0
+
+OUT_IMAGE
+Ex 100 100 -1 -1  ey_xplane logscale
+
+OUT_IMAGE
+Ex 100 -1 100 -1  ey_yplane logscale
+
+OUT_IMAGE
+Ex 100 -1 -1 100  ey_zplane logscale
+
+
+OUT_POINT
+Ex 1 150 100 100 pointx
+
+
+SOURCE_POINT
+150 90 70 0 xpulse.txt
+
+BOUNDARY_ALL
+cpml 10 3 -1 0.03 4
+
+

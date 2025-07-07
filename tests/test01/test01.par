@@ -1,0 +1,28 @@
+POOL
+200 200 200 1e-6 1e-6 1e-6
+
+COMP
+401
+
+VERBOSE
+3
+
+MATMODE_CHECK
+1
+
+OUT_IMAGE
+Ex 100 100 -1 -1  ex_xplane logscale
+
+OUT_IMAGE
+Ex 100 -1 100 -1  ex_yplane logscale
+
+OUT_IMAGE
+Ex 100 -1 -1 100  ex_zplane logscale
+
+OUT_POINT
+Ex 1 150 150 150 point_log
+
+SOURCE_POINT
+100 100 100 0 xsource.txt
+
+
