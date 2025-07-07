@@ -1,0 +1,110 @@
+# gsvit.spec.in
+
+Name:          gsvit
+Version:       1.9.4
+Release:       1
+Summary:       Gsvit summary
+
+Group:         Productivity/Scientific/Physics
+License:       GPL-2.0
+URL:           http://gsvit.net/
+Source0:       http://gsvit.net/download/%{version}/%{name}-%{version}.tar.xz
+BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-root-%(id -un)
+Requires(pre):    /sbin/ldconfig
+Requires(postun): /sbin/ldconfig
+
+BuildRequires: gwyddion >= 2.0
+BuildRequires: gwyddion-devel >= 2.0
+BuildRequires: xz 
+
+%if 0%{?suse_version}
+
+%if 0%{?suse_version} >= 1230
+BuildRequires: glu-devel
+BuildRequires: libXmu-devel
+BuildRequires: libXt-devel
+BuildRequires: libSM-devel
+BuildRequires: libICE-devel
+BuildRequires: pangox-devel
+%else
+BuildRequires: xorg-x11-Mesa-devel
+BuildRequires: xorg-x11-libXmu-devel
+BuildRequires: xorg-x11-libXt-devel
+BuildRequires: xorg-x11-libSM-devel
+BuildRequires: xorg-x11-libICE-devel
+BuildRequires: pango-devel
+%endif
+
+%else
+
+BuildRequires: gtkglext-devel
+BuildRequires: mesa-libGL-devel
+BuildRequires: mesa-libGLU-devel
+BuildRequires: libXmu-devel
+BuildRequires: libXt-devel
+BuildRequires: libSM-devel
+BuildRequires: libICE-devel
+
+%endif
+
+%define pkgdatadir %{_datadir}/%{name}
+
+%description
+Gsvit is an open source FDTD solver with graphics card computing support.
+
+GSvit covers set of numerical tools for Finite Difference in Time Domain calculations supporting use of Nvidia CUDA environment compatible graphics cards. Main scientific purposes include research in nanotechnology and nanoscale optics, like scanning near-field optical microscopy, tip enhanced Raman scattering, rough surface scattering, etc. However, as FDTD is an universal method, it can be used for any other purposes.
+
+Main mission of this project is to convert set of already developed software tools described here:
+
+P. Klapetek, M. Valtr: Near-field optical microscopy simulations using graphics processing units, Surf. Interface Analysis, 2010, 42, pp 1109-1113
+P. Klapetek et al: Rough surface scattering simulations using graphics cards, Applied Surface Science, 2010, 256, pp 5640-5643.
+
+into GPL based open source software. This process can be rather slow, at least for some of the algorithms. 
+
+%prep
+%setup -q
+
+%build
+%configure
+make %{?_smp_mflags}
+
+%install
+rm -rf $RPM_BUILD_ROOT
+make install DESTDIR=$RPM_BUILD_ROOT
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%post
+/sbin/ldconfig
+
+%postun
+/sbin/ldconfig
+
+%files
+%defattr(755,root,root)
+%{_bindir}/%{name}
+%{_bindir}/%{name}2d
+%{_bindir}/xsvit
+%defattr(-,root,root)
+%doc AUTHORS COPYING INSTALL NEWS README
+%{pkgdatadir}/tests/selftests/*
+%{pkgdatadir}/tests/test06/*
+%{pkgdatadir}/tests/test05/*
+%{pkgdatadir}/tests/test04/*
+%{pkgdatadir}/tests/test03/*
+%{pkgdatadir}/tests/test02/*
+%{pkgdatadir}/tests/test01/*
+%{pkgdatadir}/tests/tests_description
+%{pkgdatadir}/data/spectra/*
+%dir %{pkgdatadir}/tests/selftests
+%dir %{pkgdatadir}/tests/test06
+%dir %{pkgdatadir}/tests/test05
+%dir %{pkgdatadir}/tests/test04
+%dir %{pkgdatadir}/tests/test03
+%dir %{pkgdatadir}/tests/test02
+%dir %{pkgdatadir}/tests/test01
+%dir %{pkgdatadir}/tests
+%dir %{pkgdatadir}/data/spectra
+%dir %{pkgdatadir}/data
+%dir %{pkgdatadir}

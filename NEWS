@@ -1,0 +1,155 @@
+GSvit 1.9.4
+- bug fixed in automatic wavelength detection 
+- bug fixed in gpu kernels for nonequal voxel size
+- improved pan and zoom to point by mouse in 3D scene 
+- UI improvement. Material objects can be changed in a separated window instead of a dialog window 
+
+
+GSvit 1.9.3
+- bug fixed for growth on larger volumes
+- bug fixed in memory readout from GPU parameters
+- added - pan splitters between views in GUI
+- added pan and zoom to point by mouse in 3D scene
+
+
+GSvit 1.9.2
+- material can be now loaded also from local directory (with priority over the database one)
+- conformal skipping of TSF boundary documented and compatible with XSvit
+- corrected inapropriate handling of cuda number of cards on systems with no compatible cards
+- bug fixed in pulse sources entry
+- bug fixed in growth modifier
+- introduced vector displacement spectral synthesis modifier
+- internal changes related to subgriddding
+
+
+GSvit 1.9.1
+- fixed bugs in computational part introduced in the last version, mostly on GPU (e.g. PLRC), but also on CPU for TSFF.
+- revised automated tests (wrong data corrected for metal models)
+- bugs in GUI fixed
+
+GSvit 1.9
+- fixed minor bugs
+
+GSvit 1.9-rc1
+- fixed updating par file
+- fixed lost focus after GSvit start on Windows
+- UI improvement. Parameters can be changed in a separated window instead of a dialog window
+
+GSvit 1.8.2
+- introduced checking parameter consistency in XSvit 
+- corrected bug in none and cpml boundary conditions (affecting long term stability of cpml)
+- linear, tabulated, plrc and ade medium can extend fully to cpml
+- added plane output to 2d version
+- corrected bug in ltsf initialisation
+- Windows version built now using MSVC 2015
+- many small bugs in XSvit graphical user interface fixed
+
+
+GSvit 1.8.1:
+- small bug fix release
+- versioning changed to three number format
+
+GSvit 1.8:
+- various bugs in XSvit dialogues fixed
+- default verbose mode in XSvit changed to 1
+- added simple preview of plane outputs when calculation is running
+- added crop material modifier
+- added arbitrary function vector material modifier, experimental only
+- corrected handling of multiple media in roughness modifier.
+- corrected bug in tabulated material applied over previously defined cp material.
+- corrected bug in both electric and magnetic material vector input
+- corrected bug in forces output skipping when nothing else is output
+- added staircasing reduction option via antialiasing for linear dielectrics
+- corrected terminology: former PLRC was in fact RC (recursive convolution)
+- added Piecewise Linear Recursive Convolution and Auxiliary Differential Equations method
+- added antialiasing for linear materials, former smoothing parameter converted to this regime
+- corrected bug in wrong use of magnetic tabulated material
+
+
+GSvit 1.7:
+- added an option for skipping GPU query at initialisation
+- Gaussian multiplier option added to LTSF and z direction TSF
+- various XSvit bugs fixed
+- corrected computational pool freeing at end of computation
+- added volume output in ASCII and binary format
+- corrected automated detection of wavelength for LTSFF and TSFF source
+- corrected CPML performance on GPU in presence of tabulated medium
+- parameter file name handling from commandline for XSvit 
+- added medium modifiers (grow, roughen), still experimental only
+- added generated square NFFF output option
+- added local and external source, still experimental only
+- added plane output to ASCII/binary file
+- added handling of basic geometric entities by XSvit
+- corrected removal of temporary files at end of computation
+- MS Windows binary now built using MS Visual Studio 2012
+
+GSvit 1.6:
+- experimentally added simple parameter file viewer and program launcher XSvit, bugreports welcome.
+- improved initialisation for large data multithreaded
+- change in point source API (allows pre-generated sources, non backward compatible)
+- change in image source API (removed unused logscale option, backward compatible)
+- various minor bug fixes (e.g. in Gwyddion height field initialisation, etc.).
+
+GSvit 1.5:
+- corrected bug in tetrahedron loading
+- added layered TSF implementation (CPU only)
+- added layered focused TSF implementation (CPU only)
+
+GSvit 1.4:
+- optical force calculation introduced
+- Debye and critical point model media now working also on GPU
+- added amplitude parameter to automatic source waveforms
+- simple smoothing of linear material parameters option added to reduce staircasing
+
+GSvit 1.3:
+- multithreading on CPU moved to OpenMP, more parallelism, significant speedup on CPU
+- slight speedup of some algorithms on GPU
+- minor bugs fixed in parameter and settings loading
+- corrected farfield spherical area behavior for single profiles
+
+GSvit 1.2:
+- added focused light source
+- corrected periodic NFFF for treating both top and bottom integration area border
+- focused light source and periodic NFFF implemented on GPU as well
+- bugs found during application notes creation fixed
+
+GSvit 1.1:
+- added periodic near-to-far field transform
+- corrected periodic boundary conditions
+- bugs fixed (e.g. corrected conductivity calculations from database)
+
+GSvit 1.00:
+- added possibility of skipping part of NFFF integration surface
+- many bugs fixed, algorithms tested
+
+GSvit 0.99:
+- Tetgen tetragonal mesh data input introduced
+- Gwyddion height field data input introduced
+- Some benchmarks added
+- GPU scattered field implemented
+
+Gsvit 0.98:
+- multithreading system introduced
+- relative paths for tests and optical constants database implemented
+- only Linux version provided (use 0.97 version for MS Windows)
+
+Gsvit 0.97:
+- compilation on MS Windows now also with graphics card support
+- database of optical constants introduced
+- automatic detection of source wavelength
+- minor bugs corrected
+
+Gsvit 0.96:
+- self testing features added
+- point output in GPU made faster using accumulators
+- many bugs corrected
+- added automatic detection of source wavelength for future use
+
+Gsvit 0.95:
+- Convolutional Perfecly Matched Layer added
+- many algorithms corrected to work on GPU as well
+- examples (tests) added
+
+GSvit 0.9:
+- initial commit, many algorithms untested
+- translateable on major OS

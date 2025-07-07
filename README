@@ -1,0 +1,27 @@
+GSvit is a suite of software for FDTD use on CPU and graphics cards,
+originally focused on rough surface scattering, solar cell efficiency
+calculations and Scanning Near-Field Optical microscopy image simulations.
+
+On systems where it is possible (e.g. Linux), GSvit is installed 
+using standard "./configure; make; make install" approach
+as many other applications. See generic information in 'INSTALL' file.
+ 
+
+Right now, only computational core is provided (gsvit) that will be followed
+by different GUI frontends and backends for different applications.
+GSvit optionally uses package "Gwyddion" for output and input data treatment.
+If computation on graphics cards is requested, NVIDIA CUDA environment is used.
+A path to these two packages may need to be supplied if they are not in
+a default location, e.g. like this:
+
+./autogen.sh --prefix=/home/klapetek/runsvit --with-gwyddion=/home/klapetek/run2
+./autogen.sh --prefix=/home/klapetek/runsvit --with-cuda=/usr/local/cuda --with-gwyddion=/home/klapetek/run2
+
+Note that it is necessary to have LD_LIBRARY_PATH variable pointing also to directory
+where the Gwyddion libraries are located, so if it is in non-default location as in above example,
+you may need to add to your .bashrc file lines:
+
+LD_LIBRARY_PATH=/home/klapetek/run2/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH 
+
+GSvit is cross-built for Windows as well using a mingw32 gcc compiler. To date only the 32-bit binary is created.
